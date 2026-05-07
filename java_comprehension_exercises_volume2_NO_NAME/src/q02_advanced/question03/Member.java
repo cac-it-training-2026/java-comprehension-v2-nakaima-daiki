@@ -1,4 +1,4 @@
-package q02_advanced.question02;
+package q02_advanced.question03;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,6 @@ public class Member {
 	private List<Coupon> coupons;
 
 	public Member() {
-
 	}
 
 	public Member(int id, String password, String name, int age, int rank) {
@@ -22,45 +21,29 @@ public class Member {
 		this.name = name;
 		this.age = age;
 		this.rank = rank;
+		this.coupons = new ArrayList<>();
 	}
 
-	public static Member getInstance(
-			int id,
-			String password,
-			String name,
-			int age,
-			int rank) {
+	public static Member getInstance(int id, String password, String name, int age, int rank) {
 
 		Member member = new Member(id, password, name, age, rank);
-
-		List<Coupon> couponList = new ArrayList<>();
 
 		Coupon coupon1 = Coupon.getInstance(1, 0.5, "最初の特典");
 		Coupon coupon2 = Coupon.getInstance(2, 0.25, "今月の特典");
 
-		couponList.add(coupon1);
-		couponList.add(coupon2);
-
-		member.setCoupons(couponList);
+		member.coupons.add(coupon1);
+		member.coupons.add(coupon2);
 
 		return member;
 	}
 
 	public void showMember() {
 		System.out.println(this.toString());
-		System.out.println("******************");
-	}
-
-	public List<Coupon> getCoupons() {
-		return coupons;
 	}
 
 	@Override
 	public String toString() {
-		return "Member [id=" + id
-				+ ", password=" + password
-				+ ", name=" + name
-				+ ", age=" + age
+		return "Member [id=" + id + ", password=" + password + ", name=" + name + ", age=" + age
 				+ ", rank=" + rank
 				+ ", coupons=" + coupons + "]";
 	}
@@ -133,6 +116,13 @@ public class Member {
 	 */
 	public void setRank(int rank) {
 		this.rank = rank;
+	}
+
+	/**
+	 * @return coupons
+	 */
+	public List<Coupon> getCoupons() {
+		return coupons;
 	}
 
 	/**

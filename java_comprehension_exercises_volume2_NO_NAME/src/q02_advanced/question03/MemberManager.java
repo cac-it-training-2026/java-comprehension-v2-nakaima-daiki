@@ -1,11 +1,10 @@
-package q02_advanced.question02;
+package q02_advanced.question03;
 
 import java.util.List;
 
 public class MemberManager {
 
 	private MemberManager() {
-
 	}
 
 	public static void showAllMembers(List<Member> members) {
@@ -15,25 +14,16 @@ public class MemberManager {
 		}
 	}
 
-	public static void updatePassword(
-			List<Member> members,
-			int targetId,
-			String newPassword) {
+	public static void updatePassword(List<Member> members, int targetId, String newPassword) {
 
-		boolean exists = false;
-
+		boolean isNotExistMember = false;
 		for (Member member : members) {
-
 			if (member.getId() == targetId) {
-
 				member.setPassword(newPassword);
-				exists = true;
 				break;
 			}
-		}
-
-		if (!exists) {
-			System.out.println("該当者はいませんでした。");
+			isNotExistMember = true;
 		}
 	}
+
 }
